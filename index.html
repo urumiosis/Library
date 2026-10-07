@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Library7</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="mark">◈</span><span>Library7</span></div>
+  <div class="header-actions">
+    <span id="connection" class="connection">Not connected</span>
+    <button id="menuBtn" class="icon-btn" aria-label="Menu">•••</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div><h1>Library</h1><p>Choose a book and a person to check it out.</p></div>
+    <div class="stats">
+      <div><b id="bookCount">0</b><span>Books</span></div>
+      <div><b id="availableCount">0</b><span>Available</span></div>
+      <div><b id="loanCount">0</b><span>On loan</span></div>
+      <div><b id="peopleCount">0</b><span>People</span></div>
+    </div>
+  </section>
+
+  <section class="checkout card">
+    <div class="section-head"><div><h2>Checkout</h2><p id="selectionHint">Select a book and a person.</p></div><button id="loanBtn" class="primary" disabled>LOAN BOOK</button></div>
+    <div class="checkout-grid">
+      <div><label>Book</label><div id="selectedBook" class="selected-box empty">No book selected</div></div>
+      <div><label>Person</label><div id="selectedPerson" class="selected-box empty">No person selected</div></div>
+    </div>
+  </section>
+
+  <div class="columns">
+    <section class="card">
+      <div class="section-head"><div><h2>Books</h2><p>Click a cover to select it.</p></div>
+        <div class="filters"><button data-filter="all" class="filter active">All</button><button data-filter="available" class="filter">Available</button><button data-filter="loaned" class="filter">On loan</button></div>
+      </div>
+      <div id="books" class="book-grid"><div class="empty-state">No books yet.<br>Use ••• to add one.</div></div>
+    </section>
+
+    <section class="card">
+      <div class="section-head"><div><h2>People</h2><p>Click a person to select them.</p></div></div>
+      <div id="people" class="people-grid"><div class="empty-state">No people yet.<br>Use ••• to add someone.</div></div>
+    </section>
+  </div>
+
+  <section class="card log-card">
+    <div class="section-head"><div><h2>Activity</h2><p>Loan and return history.</p></div><button id="refreshBtn" class="secondary">Refresh</button></div>
+    <div id="log" class="log"></div>
+  </section>
+</main>
+
+<div id="menu" class="popover hidden">
+  <button data-action="add-book">＋ Add book</button>
+  <button data-action="add-person">＋ Add person</button>
+  <button data-action="setup">⚙ Supabase setup</button>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modal-panel">
+  <div class="modal-head"><h2 id="modalTitle">Add book</h2><button id="closeModal" class="icon-btn">×</button></div>
+  <form id="modalForm"></form>
+</div></div>
+
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>
